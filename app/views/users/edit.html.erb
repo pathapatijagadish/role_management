@@ -1,0 +1,8 @@
+<%= link_to "Back",admins_path, :class => "btn btn-danger backCls" %>
+<h2><%= @user.type %>&nbsp;/&nbsp;<%= @user.new_record? ? 'Add' : 'Edit' %></h2>
+<%= form_for @user,:as=>:user,:url=>user_path(@user),:method=>:put do |f| %>  
+	<%= render partial: 'form',:locals=>{:f=>f} %>
+	<div class="actions">
+	<%= f.submit "Save",:class => "btn btn-primary" %>
+	</div>	
+<% end %>

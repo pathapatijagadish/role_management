@@ -1,0 +1,46 @@
+  <% if f.object.errors.any? %>  
+  <div id="errorExplanation">  
+    <h2><%= pluralize(f.object.errors.count, "error") %> prohibited this user from being saved:</h2>  
+    <ul>  
+    <% f.object.errors.full_messages.each do |msg| %>  
+      <li><%= msg %></li>  
+    <% end %>  
+    </ul>  
+  </div>  
+  <% end %>  
+  <%= f.hidden_field :type,:value=>f.object.type || params[:type] %>
+
+  <div class="field">
+    <label><%= f.label :first_name %></label>
+    <%= f.text_field :first_name, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <label><%= f.label :last_name %></label>
+    <%= f.text_field :last_name %>
+  </div>
+
+  <div class="field">
+    <label><%= f.label :email %></label>
+    <%= f.email_field :email %>
+  </div>
+
+
+  <div class="field">
+    <label><%= f.label :password %>    
+    <%= f.password_field :password, autocomplete: "off" %>
+  </div>
+
+  <div class="field">
+    <label><%= f.label :password_confirmation %></label>
+    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+  </div>
+
+  <div class="field">
+    <label><%= f.label :date_of_birth %></label>
+    <%= f.text_field :date_of_birth %>
+  </div>
+  <div class="field">
+    <label><%= f.label :status %></label>
+    <%= f.select :status, options_for_select([['Active',1],['Block',0]]) %>
+  </div>

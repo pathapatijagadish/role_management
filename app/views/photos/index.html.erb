@@ -1,0 +1,18 @@
+<%= link_to "Back",:back, :class => "btn btn-danger backCls" %>
+<h3 class= "navbar-text">Photos In Picasa</h3>
+<fieldset>
+	<legend>Upload Photo</legend>
+	<%= form_tag({:action => 'create'},:method=>:post, :multipart => true) do %>	
+	<p><%= file_field_tag 'image' %></p>
+	<p><%= submit_tag "Upload", :disable_with => 'Please wait...', :class => "btn btn-primary" %></p>
+	<% end %>
+</fieldset>
+<fieldset>
+<div id="picasa_photos">	
+	<% if @photos.present? %>
+		<% @photos.reverse.each do |photo| %>
+			<p class="col-xs-3"> <%= image_tag photo.media.cover_photo_url ,:size => "500x250",:class=>"thumbnail"%></p>
+		<% end %>
+	<% end %>
+</div>
+</fieldset>
